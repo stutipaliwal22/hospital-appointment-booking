@@ -1,0 +1,39 @@
+function WhyChoose() {
+  return (
+    <section className="why">
+
+      <h2>Why Choose MediCare Hospital?</h2>
+
+      <div className="why-boxes">
+
+        <div className="why-card">
+          🩺
+          <h3>Experienced Doctors</h3>
+          <p>Highly qualified specialists with years of experience.</p>
+        </div>
+
+        <div className="why-card">
+          ⏰
+          <h3>24/7 Emergency</h3>
+          <p>Emergency medical services available round the clock.</p>
+        </div>
+
+        <div className="why-card">
+          💻
+          <h3>Easy Booking</h3>
+          <p>Book appointments online in just a few clicks.</p>
+        </div>
+
+        <div className="why-card">
+          ❤️
+          <h3>Patient Care</h3>
+          <p>Friendly staff focused on your comfort and recovery.</p>
+        </div>
+
+      </div>
+
+    </section>
+  );
+}
+
+export default WhyChoose;

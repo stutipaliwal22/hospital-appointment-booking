@@ -1,0 +1,967 @@
+/* ================= GLOBAL ================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f8fbff;
+  color: #12305c;
+}
+
+
+/* ================= NAVBAR ================= */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: white;
+}
+
+
+nav h2 {
+  color: #1769e8;
+  font-size: 24px;
+}
+
+
+nav div {
+  display: flex;
+  gap: 30px;
+}
+
+
+nav a {
+  text-decoration: none;
+  color: #12305c;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+nav a:hover {
+  color: #1769e8;
+}
+
+
+nav button {
+  background: #1769e8;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+
+/* ================= HERO SECTION ================= */
+
+
+.hero {
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  padding: 70px 50px;
+
+}
+
+
+.hero-text {
+
+  width: 45%;
+
+}
+
+
+.hero h1 {
+
+  font-size: 55px;
+  color: #12305c;
+
+}
+
+
+.hero span {
+
+  color: #1769e8;
+
+}
+
+
+.hero p {
+
+  font-size:18px;
+  color:#555;
+  line-height:1.6;
+  margin-bottom:30px;
+
+}
+
+
+
+.hero button {
+
+  background:#1769e8;
+  color:white;
+
+  border:none;
+
+  padding:14px 25px;
+
+  border-radius:8px;
+
+  cursor:pointer;
+
+}
+
+
+
+.hero .outline {
+
+  background:white;
+
+  color:#1769e8;
+
+  border:2px solid #1769e8;
+
+  margin-left:15px;
+
+}
+
+
+
+.hero img {
+
+  width:450px;
+
+  height:350px;
+
+  object-fit:cover;
+
+  border-radius:25px;
+
+}
+
+
+
+/* ================= SERVICES ================= */
+
+
+.services {
+
+  background:white;
+
+  text-align:center;
+
+  padding:70px 50px;
+
+}
+
+
+.services h2 {
+
+  font-size:38px;
+
+  color:#12305c;
+
+}
+
+
+.services p {
+
+  color:#666;
+
+  font-size:18px;
+
+}
+
+
+
+/* ================= DEPARTMENT VERTICAL TABS ================= */
+
+
+.department-tabs {
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:25px;
+
+  margin-top:45px;
+
+}
+
+
+
+.department-tab {
+
+  width:150px;
+
+  height:240px;
+
+  background:#f8fbff;
+
+  border-radius:80px 80px 25px 25px;
+
+  overflow:hidden;
+
+  cursor:pointer;
+
+  transition:0.4s;
+
+  box-shadow:0 5px 18px rgba(0,0,0,0.12);
+
+}
+
+
+
+.department-tab img {
+
+  width:100%;
+
+  height:150px;
+
+  object-fit:cover;
+
+}
+
+
+
+.department-tab h3 {
+
+  font-size:17px;
+
+  color:#12305c;
+
+  margin-top:18px;
+
+}
+
+
+
+.department-tab:hover {
+
+  transform:translateY(-15px);
+
+  background:#1769e8;
+
+  box-shadow:0 15px 35px rgba(23,105,232,0.35);
+
+}
+
+
+
+.department-tab:hover h3 {
+
+  color:white;
+
+  text-decoration:underline;
+
+}
+
+
+
+/* ================= CONTACT ================= */
+
+
+.contact {
+
+  padding:60px 50px;
+
+  background:#f8fbff;
+
+  text-align:center;
+
+}
+
+
+.contact h2 {
+
+  font-size:35px;
+
+}
+
+
+
+.contact-cards {
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:25px;
+
+  margin-top:35px;
+
+}
+
+
+
+.contact-card {
+
+  width:230px;
+
+  padding:25px;
+
+  background:white;
+
+  border-radius:20px;
+
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+}
+
+
+
+.contact-card h3 {
+
+  color:#1769e8;
+
+}
+
+
+
+.contact-card p {
+
+  color:#555;
+
+  font-size:15px;
+
+}
+
+.service-cards {
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  flex-wrap:wrap;
+  margin-top:35px;
+}
+
+
+.service-card {
+  background:white;
+  width:180px;
+  padding:30px;
+  border-radius:15px;
+  font-size:18px;
+  font-weight:bold;
+  color:#1769e8;
+  box-shadow:0 5px 15px #ddd;
+}
+
+/* ===== DOCTORS ===== */
+
+.doctors {
+
+  padding:60px 50px;
+
+  background:white;
+
+  text-align:center;
+
+}
+
+
+.doctors h2 {
+
+  font-size:35px;
+
+  color:#12305c;
+
+}
+
+
+.doctor-cards {
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:30px;
+
+  margin-top:40px;
+
+}
+
+
+.doctor-card {
+
+  width:260px;
+
+  background:#f8fbff;
+
+  padding:25px;
+
+  border-radius:20px;
+
+  box-shadow:0 5px 15px #ddd;
+
+  transition:0.3s;
+
+}
+
+
+.doctor-card:hover {
+
+  transform:translateY(-10px);
+
+}
+
+
+.doctor-card img {
+
+  width:150px;
+
+  height:150px;
+
+  border-radius:50%;
+
+  object-fit:cover;
+
+}
+
+
+.doctor-card h3 {
+
+  color:#12305c;
+
+}
+
+
+.doctor-card p {
+
+  color:#1769e8;
+
+  font-weight:bold;
+
+}
+
+
+.doctor-card span {
+
+  color:#555;
+
+}
+
+
+.doctor-card button {
+
+  margin-top:15px;
+
+}
+
+/* ===== DOCTORS ===== */
+
+.doctors {
+  padding: 60px 50px;
+  background: white;
+  text-align: center;
+}
+
+
+.doctors h2 {
+  font-size: 35px;
+  color: #12305c;
+}
+
+
+.doctor-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+
+.doctor-card {
+
+  width:260px;
+
+  padding:30px;
+
+  background:#f8fbff;
+
+  border-radius:20px;
+
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+  transition:0.3s;
+
+}
+
+
+.doctor-card:hover {
+
+  transform:translateY(-10px);
+
+}
+
+
+.doctor-circle {
+
+  width:100px;
+
+  height:100px;
+
+  margin:auto;
+
+  border-radius:50%;
+
+  background:#1769e8;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  font-size:45px;
+
+}
+
+
+.doctor-card h3 {
+
+  color:#12305c;
+
+  margin-top:20px;
+
+}
+
+
+.doctor-card p {
+
+  color:#1769e8;
+
+  font-weight:bold;
+
+}
+
+
+.doctor-card span {
+
+  color:#555;
+
+  display:block;
+
+  margin-top:10px;
+
+}
+
+
+.doctor-card button {
+
+  margin-top:30px;
+  padding:12px 22px;
+
+}
+
+.rating {
+
+  margin-top:15px;
+
+  font-size:18px;
+
+}
+
+
+.availability {
+
+  margin-top:10px;
+
+  color:#16a34a;
+
+  font-size:14px;
+
+  font-weight:bold;
+
+}
+
+/* WHY CHOOSE */
+
+.why{
+padding:70px 50px;
+background:#f8fbff;
+text-align:center;
+}
+
+.why-boxes{
+display:flex;
+justify-content:center;
+gap:30px;
+margin-top:40px;
+flex-wrap:wrap;
+}
+
+.why-card{
+width:250px;
+padding:30px;
+background:white;
+border-radius:18px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.why-card:hover{
+transform:translateY(-10px);
+}
+
+.why-card h3{
+color:#1769e8;
+}
+
+.why-card p{
+color:#555;
+line-height:1.6;
+}
+
+/* TESTIMONIALS */
+
+.testimonials{
+
+    padding:70px 50px;
+
+    background:white;
+
+    text-align:center;
+
+}
+
+.testimonials h2{
+
+    font-size:36px;
+
+    color:#12305c;
+
+}
+
+.testimonial-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:30px;
+
+    margin-top:40px;
+
+    flex-wrap:wrap;
+
+}
+
+.testimonial{
+
+    width:300px;
+
+    background:#f8fbff;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+    transition:.3s;
+
+}
+
+.testimonial:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.testimonial p{
+
+    color:#555;
+
+    line-height:1.6;
+
+}
+
+.testimonial h4{
+
+    color:#1769e8;
+
+}
+
+/* FOOTER */
+
+.footer {
+
+  background:#12305c;
+
+  color:white;
+
+  padding:50px;
+
+}
+
+
+.footer-content {
+
+  display:flex;
+
+  justify-content:space-around;
+
+  gap:40px;
+
+}
+
+
+.footer h2 {
+
+  color:white;
+
+}
+
+
+.footer h3 {
+
+  color:#8ec5ff;
+
+}
+
+
+.footer p {
+
+  color:#ddd;
+
+  max-width:300px;
+
+}
+
+
+.copyright {
+
+  text-align:center;
+
+  margin-top:30px;
+
+  padding-top:20px;
+
+  border-top:1px solid rgba(255,255,255,0.3);
+
+  color:#ddd;
+
+}
+
+/* SERVICE CARDS */
+
+.service-cards {
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:25px;
+
+  flex-wrap:wrap;
+
+  margin-top:40px;
+
+}
+
+
+.service-card {
+
+  width:180px;
+
+  padding:30px;
+
+  background:white;
+
+  border-radius:20px;
+
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+
+  font-size:18px;
+
+  font-weight:bold;
+
+  color:#1769e8;
+
+  transition:0.3s ease;
+
+  cursor:pointer;
+
+}
+
+
+.service-card:hover {
+
+  transform:translateY(-12px);
+
+  background:#1769e8;
+
+  color:white;
+
+  box-shadow:0 15px 30px rgba(23,105,232,0.3);
+
+}
+
+/* STATS */
+
+.stats {
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:40px;
+
+  padding:50px;
+
+  background:#1769e8;
+
+}
+
+
+.stat-box {
+
+  width:200px;
+
+  text-align:center;
+
+  color:white;
+
+}
+
+
+.stat-box h2 {
+
+  font-size:40px;
+
+  margin:0;
+
+}
+
+
+.stat-box p {
+
+  font-size:18px;
+
+}
+
+/* ================= BOOK APPOINTMENT ================= */
+
+
+.booking-page {
+
+  min-height:80vh;
+
+  padding:60px 50px;
+
+  background:#f8fbff;
+
+  text-align:center;
+
+}
+
+
+.booking-page h1 {
+
+  font-size:40px;
+
+  color:#12305c;
+
+}
+
+
+.booking-page p {
+
+  color:#666;
+
+  font-size:18px;
+
+}
+
+
+
+.appointment-form {
+
+  width:500px;
+
+  margin:40px auto;
+
+  background:white;
+
+  padding:35px;
+
+  border-radius:20px;
+
+  box-shadow:0 8px 25px rgba(0,0,0,0.1);
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:18px;
+
+}
+
+
+
+.appointment-form input,
+
+.appointment-form select {
+
+  padding:14px;
+
+  border-radius:10px;
+
+  border:1px solid #ddd;
+
+  font-size:16px;
+
+  outline:none;
+
+}
+
+
+
+.appointment-form input:focus,
+
+.appointment-form select:focus {
+
+  border-color:#1769e8;
+
+}
+
+
+
+.appointment-form button {
+
+  margin-top:10px;
+
+  padding:14px;
+
+  background:#1769e8;
+
+  color:white;
+
+  border:none;
+
+  border-radius:10px;
+
+  font-size:17px;
+
+  cursor:pointer;
+
+}
+
+
+
+.appointment-form button:hover {
+
+  background:#0d55c5;
+
+}
