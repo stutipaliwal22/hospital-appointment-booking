@@ -6,7 +6,7 @@ import Contact from "../components/Contact";
 import Testimonials from "../components/Testimonials";
 import Stats from "../components/Stats";
 import Footer from "../components/Footer";
-
+import bannerImg from "../assets/hospital-banner.webp";
 function Home() {
   return (
     <div>

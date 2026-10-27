@@ -28,9 +28,11 @@ function Navbar() {
       </div>
 
 
-      <button>
-        Login
-      </button>
+      <a href="/login">
+  <button>
+    Login
+  </button>
+</a>
 
 
     </nav>
