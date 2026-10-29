@@ -8,115 +8,46 @@ function MyAppointments() {
 
 
 
-  const savedAppointment = JSON.parse(
-    localStorage.getItem("appointment")
-  );
+  const appointments = JSON.parse(
+    localStorage.getItem("appointments")
+  ) || [];
 
 
 
-  const appointments = [
-
-    ...(savedAppointment
-      ? [
-          {
-            patient: savedAppointment.patient || "N/A",
-            doctor: savedAppointment.doctor || "N/A",
-            department: savedAppointment.department || "N/A",
-            date: savedAppointment.date || "N/A",
-            time: savedAppointment.time || "N/A",
-            status: "Confirmed"
-          }
-        ]
-      : []),
-
-
-
-    {
-      patient: "Rahul",
-      doctor: "Dr. Rahul Verma",
-      department: "Neurology",
-      date: "30 Oct 2026",
-      time: "12:00 PM",
-      status: "Pending"
-    },
-
-
-    {
-      patient: "Raman",
-      doctor: "Dr. Shekhar Bhalla",
-      department: "Cardiology",
-      date: "04 Nov 2026",
-      time: "12:00 PM",
-      status: "Pending"
-    },
-
-
-    {
-      patient: "Anushka",
-      doctor: "Dr. Alia Singhania",
-      department: "Neurology",
-      date: "09 Nov 2026",
-      time: "04:00 PM",
-      status: "Confirmed"
-    },
-
-
-    {
-      patient: "Preksha",
-      doctor: "Dr. Priya Verma",
-      department: "Pediatrics",
-      date: "16 Nov 2026",
-      time: "04:00 PM",
-      status: "Confirmed"
-    }
-
-  ];
-
-
-
-
-
-  const filteredAppointments = appointments.filter((appointment)=>{
-
+  const filteredAppointments = appointments.filter((item) => {
 
     return (
 
-      appointment.patient
-      .toLowerCase()
-      .includes(search.toLowerCase())
+      item.patient
+        ?.toLowerCase()
+        .includes(search.toLowerCase())
 
 
       ||
 
-      appointment.doctor
-      .toLowerCase()
-      .includes(search.toLowerCase())
+      item.doctor
+        ?.toLowerCase()
+        .includes(search.toLowerCase())
 
 
       ||
 
-      appointment.department
-      .toLowerCase()
-      .includes(search.toLowerCase())
+      item.department
+        ?.toLowerCase()
+        .includes(search.toLowerCase())
 
     );
-
 
   });
 
 
 
-
-
   return (
-
 
     <section className="appointments-page">
 
 
-
       <div className="appointments-header">
-
 
         <h1>
           My Appointments
@@ -124,7 +55,7 @@ function MyAppointments() {
 
 
         <p>
-          Manage and view your upcoming doctor appointments
+          View and manage your upcoming doctor appointments
         </p>
 
 
@@ -133,14 +64,13 @@ function MyAppointments() {
 
 
 
-
       <input
 
         type="text"
 
-        className="search-box"
-
         placeholder="Search patient, doctor or department"
+
+        className="search-box"
 
         value={search}
 
@@ -152,156 +82,111 @@ function MyAppointments() {
 
 
 
+      {
 
-      <div className="appointment-table">
 
+      filteredAppointments.length > 0 ? (
 
-        <table>
 
+        <div className="appointment-cards">
 
-          <thead>
 
-            <tr>
+        {
 
-              <th>Patient</th>
+        filteredAppointments.map((item,index)=>(
 
-              <th>Doctor</th>
 
-              <th>Department</th>
+          <div 
+          className="appointment-card"
+          key={index}
+          >
 
-              <th>Date</th>
 
-              <th>Time</th>
+            <h2>
+              {item.patient}
+            </h2>
 
-              <th>Status</th>
 
-            </tr>
+            <p>
+              <b>Phone:</b> {item.phone}
+            </p>
 
 
-          </thead>
+            <p>
+              <b>Doctor:</b> {item.doctor}
+            </p>
 
 
+            <p>
+              <b>Department:</b> {item.department}
+            </p>
 
 
+            <p>
+              <b>Date:</b> {item.date}
+            </p>
 
-          <tbody>
 
+            <p>
+              <b>Time:</b> {item.time}
+            </p>
 
 
-          {
+            <span className="confirmed">
 
-            filteredAppointments.length > 0 ? (
+              {item.status}
 
+            </span>
 
-              filteredAppointments.map((item,index)=>(
 
 
-                <tr key={index}>
+          </div>
 
 
-                  <td>
-                    {item.patient}
-                  </td>
+        ))
 
+        }
 
-                  <td>
-                    {item.doctor}
-                  </td>
 
+        </div>
 
-                  <td>
-                    {item.department}
-                  </td>
 
+      )
 
-                  <td>
-                    {item.date}
-                  </td>
 
+      :
 
-                  <td>
-                    {item.time}
-                  </td>
 
+      (
 
-                  <td>
+        <div className="no-appointment">
 
+          <h2>
+            Appointment Not Found
+          </h2>
 
-                    <span
 
-                      className={
-                        item.status === "Confirmed"
-                        ? "confirmed"
-                        : "pending"
-                      }
+          <p>
+            Book an appointment to see it here.
+          </p>
 
-                    >
 
-                      {item.status}
+        </div>
 
-                    </span>
+      )
 
 
-                  </td>
+      }
 
-
-                </tr>
-
-
-              ))
-
-
-            )
-
-
-
-            :
-
-
-
-            (
-
-              <tr>
-
-                <td
-                  colSpan="6"
-                  className="not-found"
-                >
-
-                  Appointment Not Found
-
-                </td>
-
-
-              </tr>
-
-            )
-
-
-          }
-
-
-
-          </tbody>
-
-
-
-        </table>
-
-
-
-      </div>
 
 
 
     </section>
 
-
   );
 
 
 }
-
 
 
 export default MyAppointments;

@@ -1,517 +1,670 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import bannerImg from "../assets/hospital-banner.webp";
-
 
 function BookAppointment() {
 
+  const location = useLocation();
+
+  const selectedDoctor = location.state?.doctor || "";
+  const selectedDepartment = location.state?.department || "";
+
 
   const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
 
   const [formData, setFormData] = useState({
-    patient: "",
-    phone: "",
-    department: "",
-    doctor: "",
-    date: "",
-    time: ""
+
+    patient:"",
+    phone:"",
+    department:selectedDepartment,
+    doctor:selectedDoctor,
+    date:"",
+    time:""
+
   });
 
 
 
-  const handleSubmit = (e) => {
+  const doctors = {
 
-    e.preventDefault();
+    Cardiology:[
+      "Dr. Ananya Sharma",
+      "Dr. Rohan Mehta",
+      "Dr. Neha Kapoor",
+      "Dr. Arjun Singh"
+    ],
 
+    Neurology:[
+      "Dr. Rahul Verma",
+      "Dr. Priya Verma",
+      "Dr. Alia Singhania",
+      "Dr. Amit Sharma"
+    ],
 
-    localStorage.setItem(
-      "appointment",
-      JSON.stringify(formData)
-    );
+    Orthopedics:[
+      "Dr. Shekhar Bhalla",
+      "Dr. Vikram Patel",
+      "Dr. Simran Kaur",
+      "Dr. Manish Gupta"
+    ],
 
-
-    setMessage("Appointment booked successfully!");
+    Pediatrics:[
+      "Dr. Meera Kapoor",
+      "Dr. Aisha Khan",
+      "Dr. Rohit Malhotra",
+      "Dr. Sneha Verma"
+    ]
 
   };
 
 
 
+  const availableDoctors = doctors[formData.department] || [];
+
+
+
+
+  const handleSubmit = (e)=>{
+
+    e.preventDefault();
+
+
+    setError("");
+    setMessage("");
+
+
+
+    if(!formData.patient.trim()){
+
+      setError("Please enter patient name");
+      return;
+
+    }
+
+
+    if(!formData.phone.trim()){
+
+      setError("Please enter phone number");
+      return;
+
+    }
+
+
+    if(formData.phone.length !== 10){
+
+      setError("Phone number must be 10 digits");
+      return;
+
+    }
+
+
+    if(!formData.department){
+
+      setError("Please select department");
+      return;
+
+    }
+
+
+    if(!formData.doctor){
+
+      setError("Please select doctor");
+      return;
+
+    }
+
+
+    if(!formData.date){
+
+      setError("Please select appointment date");
+      return;
+
+    }
+
+
+    if(!formData.time){
+
+      setError("Please select time slot");
+      return;
+
+    }
+
+
+
+    const existingAppointments = JSON.parse(
+
+      localStorage.getItem("appointments")
+
+    ) || [];
+
+
+
+    existingAppointments.push({
+
+      ...formData,
+
+      status:"Confirmed"
+
+    });
+
+
+
+    localStorage.setItem(
+
+      "appointments",
+
+      JSON.stringify(existingAppointments)
+
+    );
+
+
+
+    setMessage("Appointment booked successfully!");
+
+
+
+    setFormData({
+
+      patient:"",
+      phone:"",
+      department:"",
+      doctor:"",
+      date:"",
+      time:""
+
+    });
+
+
+  };
+
+
 
   return (
 
-    <section className="booking-page">
+<section className="booking-page">
 
 
+<div className="booking-banner">
 
-      <div className="booking-banner">
+<img
+src={bannerImg}
+alt="Hospital"
+/>
 
 
-        <img
-          src={bannerImg}
-          alt="Hospital"
-        />
+<div className="banner-overlay">
 
+<h1>
+Book Your Appointment
+</h1>
 
-        <div className="banner-overlay">
 
-          <h1>
-            Book Your Appointment
-          </h1>
+<p>
+Schedule your visit with experienced doctors
+and get quality healthcare.
+</p>
 
 
-          <p>
-            Schedule your visit with experienced doctors
-            and get quality healthcare.
-          </p>
+</div>
 
+</div>
 
-        </div>
 
+<div className="booking-container">
 
-      </div>
 
+<div className="choose-card">
 
 
+<h2>
+Why Choose MediCare?
+</h2>
 
 
+<div className="choose-item">
 
-      <div className="booking-container">
+<span>👨‍⚕️</span>
 
+<div>
 
+<h3>
+Experienced Specialists
+</h3>
 
-        <div className="choose-card">
+<p>
+Our expert doctors provide the best healthcare.
+</p>
 
+</div>
 
-          <h2>
-            Why Choose MediCare?
-          </h2>
+</div>
 
 
+<div className="choose-item">
 
+<span>🏥</span>
 
-          <div className="choose-item">
+<div>
 
-            <span>👨‍⚕️</span>
+<h3>
+Modern Facilities
+</h3>
 
-            <div>
+<p>
+Advanced technology for better treatment.
+</p>
 
-              <h3>
-                Experienced Specialists
-              </h3>
+</div>
 
-              <p>
-                Our expert doctors provide the best healthcare.
-              </p>
+</div>
 
-            </div>
 
-          </div>
+<div className="choose-item">
 
+<span>📅</span>
 
+<div>
 
+<h3>
+Easy Online Booking
+</h3>
 
-          <div className="choose-item">
+<p>
+Book appointments anytime from anywhere.
+</p>
 
-            <span>🏥</span>
+</div>
 
-            <div>
+</div>
 
-              <h3>
-                Modern Facilities
-              </h3>
 
-              <p>
-                Advanced technology for better treatment.
-              </p>
+<div className="choose-item">
 
-            </div>
+<span>❤️</span>
 
-          </div>
+<div>
 
+<h3>
+Patient Focused Care
+</h3>
 
+<p>
+Your health and comfort are our priority.
+</p>
 
+</div>
 
+</div>
 
-          <div className="choose-item">
 
-            <span>📅</span>
+</div>
+<form
 
-            <div>
+className="appointment-form"
 
-              <h3>
-                Easy Online Booking
-              </h3>
+onSubmit={handleSubmit}
 
-              <p>
-                Book appointments anytime from anywhere.
-              </p>
+>
 
-            </div>
 
-          </div>
+<h2>
+Patient Details
+</h2>
 
 
 
+<div className="input-row">
 
 
-          <div className="choose-item">
+<input
 
-            <span>❤️</span>
+type="text"
 
-            <div>
+placeholder="Full Name"
 
-              <h3>
-                Patient Focused Care
-              </h3>
+value={formData.patient}
 
-              <p>
-                Your health and comfort are our priority.
-              </p>
+onChange={(e)=>setFormData({
 
-            </div>
+...formData,
 
-          </div>
+patient:e.target.value
 
+})}
 
+/>
 
-        </div>
 
 
+<input
 
+type="number"
 
+placeholder="Age"
 
+/>
 
 
-        <form
-          className="appointment-form"
-          onSubmit={handleSubmit}
-        >
+</div>
 
 
-          <h2>
-            Patient Details
-          </h2>
 
 
 
+<div className="input-row">
 
 
-          <div className="input-row">
 
+<select>
 
-            <input
 
-              type="text"
+<option>
+Select Gender
+</option>
 
-              placeholder="Full Name"
 
-              onChange={(e)=>setFormData({
+<option>
+Female
+</option>
 
-                ...formData,
 
-                patient:e.target.value
+<option>
+Male
+</option>
 
-              })}
 
-            />
+</select>
 
 
 
-            <input
 
-              type="number"
 
-              placeholder="Age"
+<input
 
-            />
+type="tel"
 
+placeholder="Phone Number"
 
-          </div>
+value={formData.phone}
 
+onChange={(e)=>setFormData({
 
+...formData,
 
+phone:e.target.value
 
+})}
 
+/>
 
 
-          <div className="input-row">
+</div>
 
 
 
-            <select>
 
 
-              <option>
-                Select Gender
-              </option>
 
 
-              <option>
-                Female
-              </option>
+<div className="input-row">
 
 
-              <option>
-                Male
-              </option>
 
+<select
 
-            </select>
+value={formData.department}
 
+onChange={(e)=>setFormData({
 
+...formData,
 
+department:e.target.value,
 
+doctor:""
 
-            <input
+})}
 
-              type="tel"
+>
 
-              placeholder="Phone Number"
 
-              onChange={(e)=>setFormData({
+<option value="">
 
-                ...formData,
+Select Department
 
-                phone:e.target.value
+</option>
 
-              })}
 
-            />
+<option value="Cardiology">
 
+Cardiology
 
+</option>
 
-          </div>
 
+<option value="Neurology">
 
+Neurology
 
+</option>
 
 
+<option value="Orthopedics">
 
+Orthopedics
 
+</option>
 
 
-          <div className="input-row">
+<option value="Pediatrics">
 
+Pediatrics
 
+</option>
 
-            <select
 
-              onChange={(e)=>setFormData({
+</select>
 
-                ...formData,
 
-                department:e.target.value
 
-              })}
 
-            >
 
 
-              <option value="">
-                Select Department
-              </option>
 
+<select
 
-              <option value="Cardiology">
-                Cardiology
-              </option>
+value={formData.doctor}
 
+onChange={(e)=>setFormData({
 
-              <option value="Neurology">
-                Neurology
-              </option>
+...formData,
 
+doctor:e.target.value
 
-              <option value="Orthopedics">
-                Orthopedics
-              </option>
+})}
 
+>
 
-              <option value="Pediatrics">
-                Pediatrics
-              </option>
 
+<option value="">
 
-            </select>
+Select Doctor
 
+</option>
 
 
+{
 
+availableDoctors.map((doctor,index)=>(
 
+<option
 
+key={index}
 
+value={doctor}
 
-            <select
+>
 
-              onChange={(e)=>setFormData({
+{doctor}
 
-                ...formData,
+</option>
 
-                doctor:e.target.value
-
-              })}
-
-            >
-
-
-              <option value="">
-                Select Doctor
-              </option>
-
-
-
-              <option value="Dr. Ananya Sharma">
-                Dr. Ananya Sharma
-              </option>
-
-
-
-              <option value="Dr. Rahul Verma">
-                Dr. Rahul Verma
-              </option>
-
-
-
-              <option value="Dr. Priya Verma">
-                Dr. Priya Verma
-              </option>
-
-
-
-            </select>
-
-
-
-          </div>
-
-
-
-
-
-
-
-
-
-          <div className="input-row">
-
-
-
-            <input
-
-              type="date"
-
-              onChange={(e)=>setFormData({
-
-                ...formData,
-
-                date:e.target.value
-
-              })}
-
-            />
-
-
-
-
-
-
-
-
-            <select
-
-              onChange={(e)=>setFormData({
-
-                ...formData,
-
-                time:e.target.value
-
-              })}
-
-            >
-
-
-              <option value="">
-                Select Time Slot
-              </option>
-
-
-              <option value="10:00 AM">
-                10:00 AM
-              </option>
-
-
-              <option value="12:00 PM">
-                12:00 PM
-              </option>
-
-
-              <option value="4:00 PM">
-                4:00 PM
-              </option>
-
-
-            </select>
-
-
-
-          </div>
-
-
-
-
-
-
-
-
-          {
-
-            message && (
-
-              <p className="success-message">
-
-                {message}
-
-              </p>
-
-            )
-
-          }
-
-
-
-
-
-
-
-
-          <button type="submit">
-
-            Confirm Appointment
-
-          </button>
-
-
-
-
-
-        </form>
-
-
-
-
-
-      </div>
-
-
-
-
-
-    </section>
-
-  );
+))
 
 }
 
+
+</select>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div className="input-row">
+
+
+
+<input
+
+type="date"
+
+value={formData.date}
+
+onChange={(e)=>setFormData({
+
+...formData,
+
+date:e.target.value
+
+})}
+
+/>
+
+
+
+
+
+
+
+
+<select
+
+value={formData.time}
+
+onChange={(e)=>setFormData({
+
+...formData,
+
+time:e.target.value
+
+})}
+
+>
+
+
+<option value="">
+
+Select Time Slot
+
+</option>
+
+
+<option value="10:00 AM">
+
+10:00 AM
+
+</option>
+
+
+<option value="12:00 PM">
+
+12:00 PM
+
+</option>
+
+
+<option value="4:00 PM">
+
+4:00 PM
+
+</option>
+
+
+</select>
+
+
+
+</div>
+
+
+
+
+
+
+
+{
+
+error && (
+
+<p className="error-message">
+
+{error}
+
+</p>
+
+)
+
+}
+
+
+
+
+{
+
+message && (
+
+<p className="success-message">
+
+{message}
+
+</p>
+
+)
+
+}
+
+
+
+
+
+<button type="submit">
+
+Confirm Appointment
+
+</button>
+
+
+
+</form>
+
+
+</div>
+
+
+</section>
+
+
+);
+
+}
 
 
 export default BookAppointment;

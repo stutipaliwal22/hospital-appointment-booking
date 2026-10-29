@@ -5,6 +5,8 @@ import BookAppointment from "./pages/BookAppointment";
 import MyAppointments from "./pages/MyAppointments";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Doctors from "./pages/Doctors";
 
 function App() {
 
@@ -16,15 +18,24 @@ function App() {
 
         <Route path="/" element={<Home />} />
 
-        <Route 
-          path="/book-appointment" 
-          element={<BookAppointment />} 
-        />
-
         <Route
+  path="/book-appointment"
+  element={
+    <ProtectedRoute>
+      <BookAppointment />
+    </ProtectedRoute>
+  }
+/>
+
+
+<Route
   path="/my-appointments"
-  element={<MyAppointments />}
- />
+  element={
+    <ProtectedRoute>
+      <MyAppointments />
+    </ProtectedRoute>
+  }
+/>
 
 <Route
   path="/login"
@@ -33,6 +44,11 @@ function App() {
 <Route
   path="/register"
   element={<Register />}
+/>
+
+<Route 
+path="/doctors" 
+element={<Doctors />} 
 />
 
       </Routes>

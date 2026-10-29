@@ -357,233 +357,157 @@ nav button {
   box-shadow:0 5px 15px #ddd;
 }
 
-/* ===== DOCTORS ===== */
+/* Doctors Page */
 
-.doctors {
-
-  padding:60px 50px;
-
-  background:white;
-
-  text-align:center;
-
-}
-
-
-.doctors h2 {
-
-  font-size:35px;
-
-  color:#12305c;
-
-}
-
-
-.doctor-cards {
-
-  display:flex;
-
-  justify-content:center;
-
-  gap:30px;
-
-  margin-top:40px;
-
-}
-
-
-.doctor-card {
-
-  width:260px;
-
-  background:#f8fbff;
-
-  padding:25px;
-
-  border-radius:20px;
-
-  box-shadow:0 5px 15px #ddd;
-
-  transition:0.3s;
-
-}
-
-
-.doctor-card:hover {
-
-  transform:translateY(-10px);
-
-}
-
-
-.doctor-card img {
-
-  width:150px;
-
-  height:150px;
-
-  border-radius:50%;
-
-  object-fit:cover;
-
-}
-
-
-.doctor-card h3 {
-
-  color:#12305c;
-
-}
-
-
-.doctor-card p {
-
-  color:#1769e8;
-
-  font-weight:bold;
-
-}
-
-
-.doctor-card span {
-
-  color:#555;
-
-}
-
-
-.doctor-card button {
-
-  margin-top:15px;
-
-}
-
-/* ===== DOCTORS ===== */
-
-.doctors {
-  padding: 60px 50px;
-  background: white;
+.doctors-page {
+  padding: 50px 40px;
   text-align: center;
+  background: #f8fbff;
+  min-height: 100vh;
 }
 
 
-.doctors h2 {
-  font-size: 35px;
-  color: #12305c;
+.doctors-page h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
 }
+
+
+.doctors-page p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+
+
+.doctor-search,
+.department-filter {
+
+  width: 300px;
+  padding: 12px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+
+}
+
 
 
 .doctor-cards {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 25px;
+
   margin-top: 40px;
+
 }
+
 
 
 .doctor-card {
 
-  width:260px;
+  background: white;
 
-  padding:30px;
+  padding: 25px;
 
-  background:#f8fbff;
+  border-radius: 15px;
 
-  border-radius:20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
-
-  transition:0.3s;
+  text-align: left;
 
 }
 
 
-.doctor-card:hover {
 
-  transform:translateY(-10px);
+.doctor-card h2 {
 
-}
+  font-size: 20px;
 
-
-.doctor-circle {
-
-  width:100px;
-
-  height:100px;
-
-  margin:auto;
-
-  border-radius:50%;
-
-  background:#1769e8;
-
-  display:flex;
-
-  justify-content:center;
-
-  align-items:center;
-
-  font-size:45px;
+  color: #1b4d89;
 
 }
 
-
-.doctor-card h3 {
-
-  color:#12305c;
-
-  margin-top:20px;
-
-}
 
 
 .doctor-card p {
 
-  color:#1769e8;
+  margin: 10px 0;
 
-  font-weight:bold;
-
-}
-
-
-.doctor-card span {
-
-  color:#555;
-
-  display:block;
-
-  margin-top:10px;
+  color: #555;
 
 }
+
 
 
 .doctor-card button {
 
-  margin-top:30px;
-  padding:12px 22px;
+  margin-top: 15px;
+
+  width: 100%;
+
+  padding: 10px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #1b76d1;
+
+  color: white;
+
+  cursor: pointer;
 
 }
 
-.rating {
 
-  margin-top:15px;
 
-  font-size:18px;
+.doctor-card button:hover {
+
+  background: #125aa0;
+
+}
+
+
+
+/* Tablet */
+
+@media(max-width:1000px){
+
+  .doctor-cards{
+
+    grid-template-columns: repeat(2,1fr);
+
+  }
 
 }
 
 
-.availability {
 
-  margin-top:10px;
+/* Mobile */
 
-  color:#16a34a;
+@media(max-width:600px){
 
-  font-size:14px;
+  .doctor-cards{
 
-  font-weight:bold;
+    grid-template-columns: 1fr;
+
+  }
+
+
+  .doctor-search,
+  .department-filter{
+
+    width:90%;
+
+  }
 
 }
+
 
 /* WHY CHOOSE */
 
@@ -1796,4 +1720,213 @@ tr:hover{
 
   margin-left:5px;
 
+}
+
+.auth-page{
+
+  min-height:80vh;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+}
+
+
+.auth-card{
+
+  width:350px;
+
+  padding:30px;
+
+  border-radius:15px;
+
+  box-shadow:0 5px 20px rgba(0,0,0,0.15);
+
+  background:white;
+
+  text-align:center;
+
+}
+
+
+.auth-card h1{
+
+  color:#1d4ed8;
+
+}
+
+
+.auth-card input{
+
+  width:100%;
+
+  padding:12px;
+
+  margin:10px 0;
+
+  border-radius:8px;
+
+  border:1px solid #ccc;
+
+}
+
+
+.auth-card button{
+
+  width:100%;
+
+  padding:12px;
+
+  background:#2563eb;
+
+  color:white;
+
+  border:none;
+
+  border-radius:8px;
+
+  cursor:pointer;
+
+}
+
+
+.auth-card button:hover{
+
+  background:#1e40af;
+
+}
+
+.error-message{
+  color:red;
+  text-align:center;
+  margin:10px 0;
+  font-weight:600;
+}
+
+
+.success-message{
+  color:green;
+  text-align:center;
+  margin:10px 0;
+  font-weight:600;
+}
+
+.appointment-cards{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+
+
+.appointment-card{
+  width:320px;
+  padding:25px;
+  background:white;
+  border-radius:15px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+
+.appointment-card h2{
+  color:#2563eb;
+}
+
+
+.confirmed{
+  display:inline-block;
+  margin-top:15px;
+  padding:8px 15px;
+  border-radius:20px;
+  background:#dcfce7;
+  color:green;
+  font-weight:bold;
+}
+
+
+.no-appointment{
+  text-align:center;
+  margin-top:50px;
+}
+
+/* Mobile Responsive Design */
+
+@media (max-width: 768px) {
+
+
+  nav {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+
+  nav div {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+
+  .booking-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+
+  .choose-card,
+  .appointment-form {
+    width: 100%;
+  }
+
+
+  .input-row {
+    flex-direction: column;
+  }
+
+
+  .input-row input,
+  .input-row select {
+    width: 100%;
+  }
+
+
+  .booking-banner img {
+    height: 250px;
+  }
+
+
+  .banner-overlay h1 {
+    font-size: 28px;
+  }
+
+
+  .banner-overlay p {
+    font-size: 14px;
+  }
+
+
+  .appointment-card {
+    width: 90%;
+    margin: auto;
+  }
+
+
+  .auth-card {
+    width: 90%;
+  }
+
+
+}
+
+.doctor-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 20px;
 }

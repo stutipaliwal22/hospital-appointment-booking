@@ -1,70 +1,103 @@
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 function Login() {
+  const navigate = useNavigate();
+
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: ""
+  });
+
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setError("");
+    setMessage("");
+
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+
+    if (!savedUser) {
+      setError("No account found. Please register first.");
+      return;
+    }
+
+    if (
+      loginData.email !== savedUser.email ||
+      loginData.password !== savedUser.password
+    ) {
+      setError("Invalid email or password.");
+      return;
+    }
+
+    localStorage.setItem("loggedInUser", JSON.stringify(savedUser));
+
+    setMessage("Login successful!");
+
+    setTimeout(() => {
+      navigate("/");
+    }, 1500);
+  };
 
   return (
+    <section className="auth-page">
+      <div className="auth-card">
+        <h1>Welcome Back</h1>
 
-    <section className="login-page">
+        <p>Login to MediCare Hospital</p>
 
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="Email Address"
+            value={loginData.email}
+            onChange={(e) =>
+              setLoginData({
+                ...loginData,
+                email: e.target.value,
+              })
+            }
+          />
 
-      <div className="login-card">
+          <input
+            type="password"
+            placeholder="Password"
+            value={loginData.password}
+            onChange={(e) =>
+              setLoginData({
+                ...loginData,
+                password: e.target.value,
+              })
+            }
+          />
 
+          {error && (
+            <p className="error-message">
+              {error}
+            </p>
+          )}
 
-        <div className="login-icon">
-          🏥
-        </div>
+          {message && (
+            <p className="success-message">
+              {message}
+            </p>
+          )}
 
+          <button type="submit">
+            Login
+          </button>
 
-        <h1>
-          Welcome Back
-        </h1>
-
-
-        <p>
-          Login to manage your appointments
-        </p>
-
-
-
-
-        <input
-          type="email"
-          placeholder="Email Address"
-        />
-
-
-
-        <input
-          type="password"
-          placeholder="Password"
-        />
-
-
-
-        <button>
-          Login
-        </button>
-
-
-
-        <p className="register-text">
-
-          Don't have an account?
-
-          <a href="/register">
-  Register
-</a>
-
-        </p>
-
-
-
+          <p className="auth-link">
+            Don't have an account?{" "}
+            <Link to="/register">Register</Link>
+          </p>
+        </form>
       </div>
-
-
     </section>
-
   );
-
 }
-
 
 export default Login;
