@@ -7,7 +7,7 @@ function Footer() {
       <div className="footer-content">
 
         <div>
-          <h2>MediCare Hospital</h2>
+          <h2>MediCus Hospital</h2>
           <p>
             Providing quality healthcare with experienced doctors
             and modern medical facilities.

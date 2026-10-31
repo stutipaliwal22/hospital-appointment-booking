@@ -59,7 +59,7 @@ function Navbar() {
     <nav>
 
       <h2>
-        🏥 MediCare Hospital
+        🏥 Medicus Hospital
       </h2>
 
 
@@ -82,7 +82,7 @@ function Navbar() {
 
 
         <Link to="/my-appointments">
-          My Appointments
+          Appointments
         </Link>
 
 

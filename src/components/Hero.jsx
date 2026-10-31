@@ -10,8 +10,9 @@ function Hero() {
         </h1>
 
         <p>
-          Book appointments with experienced doctors
-          and get quality healthcare at your convenience.
+          Medicus Hospital is dedicated to providing trusted, compassionate, and high-quality healthcare services. Our team of experienced doctors, skilled nurses, and healthcare professionals ensures personalized care with the support of modern medical technology.
+
+With 24/7 emergency services, we provide timely medical assistance whenever you need it. 
         </p>
 
 <a href="/book-appointment">

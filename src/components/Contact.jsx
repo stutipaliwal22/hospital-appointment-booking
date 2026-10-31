@@ -14,15 +14,15 @@ function Contact() {
 
         <div className="contact-card">
           <h3>✉ Email</h3>
-          <p>contact@medicarehospital.com</p>
+          <p>contact@medicushospital.com</p>
         </div>
 
 
         <div className="contact-card">
           <h3>📍 Address</h3>
           <p>
-            123 Health Street,
-            Greater Noida, Uttar Pradesh
+            Sector 56,
+            Gurgaon, Harayana
           </p>
         </div>
 
@@ -30,8 +30,8 @@ function Contact() {
         <div className="contact-card">
           <h3>🕒 Timing</h3>
           <p>
-            Mon - Sat<br/>
-            8:00 AM - 8:00 PM
+            Mon - Sun<br/>
+            24/7
           </p>
         </div>
 
